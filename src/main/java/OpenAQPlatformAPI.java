@@ -18,13 +18,29 @@ public class OpenAQPlatformAPI {
         this.parameter = parameter;
     }
 
+    public String getCity() {
+        System.out.println(city);
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getParameter() {
+        System.out.println(parameter);
+        return parameter;
+    }
+
+    public void setParameter(String parameter) {
+        this.parameter = parameter;
+    }
 
     public String getResponse() {
 
         String response1 = null;
         StringBuffer response = new StringBuffer();
         String url = "https://api.openaq.org/v1/measurements?city=" + city + "&parameter=" + parameter;
-//        String url = "https://api.openaq.org/v1/cities?country=PL&limit=1";
 
         try {
             URL obj = new URL(url);
@@ -45,6 +61,7 @@ public class OpenAQPlatformAPI {
             e.printStackTrace();
         }
 
+        System.out.println(response1);
         return response1;
     }//end of getResponse
 
@@ -135,6 +152,8 @@ public class OpenAQPlatformAPI {
 
         return unit;
     }//end of getUnit
+
+
 
 //    public ArrayList getLocation(){
 //        Map map = gson.fromJson(String.valueOf(getResponse()), Map.class);
