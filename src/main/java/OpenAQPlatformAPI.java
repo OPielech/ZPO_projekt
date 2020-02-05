@@ -1,20 +1,11 @@
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.stream.JsonReader;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.StringReader;
 import java.net.HttpURLConnection;
-import java.net.JarURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 
 public class OpenAQPlatformAPI {
@@ -56,16 +47,6 @@ public class OpenAQPlatformAPI {
 
         return response1;
     }//end of getResponse
-
-//    public String getDate() {
-//        Map map = gson.fromJson(String.valueOf(getResponse()), Map.class);
-//        String result = map.get("results").toString();
-//        String[] results = result.split(",");
-//        String date = results[2].substring(13,23);
-//        System.out.println(date);
-//
-//        return date;
-//    }//end of getDate
 
     public ArrayList getDates() {
         Map map = gson.fromJson(String.valueOf(getResponse()), Map.class);
@@ -154,5 +135,24 @@ public class OpenAQPlatformAPI {
 
         return unit;
     }//end of getUnit
+
+//    public ArrayList getLocation(){
+//        Map map = gson.fromJson(String.valueOf(getResponse()), Map.class);
+//        String result = map.get("results").toString();
+//        String[] results = result.split(",");
+//        ArrayList<String> locations = new ArrayList<>();
+//
+//
+//        for (int i = 0; i < results.length; i++) {
+//
+//            if (i % 10 == 0)
+//                locations.add(results[i].substring(9));
+//
+//        }
+//
+//        System.out.println(locations);
+//
+//        return locations;
+//    }//end of getLocation
 
 }//end of class

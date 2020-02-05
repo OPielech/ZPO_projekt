@@ -3,7 +3,7 @@ public class Test {
 
         OpenAQPlatformAPI openAQPlatformAPI = new OpenAQPlatformAPI("Olsztyn" ,"pm10");
 //        System.out.println(openAQPlatformAPI.getResponse());
-        System.out.println(openAQPlatformAPI.getUnit());
+//        System.out.println(openAQPlatformAPI.getLocation());
 
     }//end of main
 }//end of class
