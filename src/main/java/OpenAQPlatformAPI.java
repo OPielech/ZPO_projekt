@@ -11,36 +11,32 @@ import java.util.Map;
 public class OpenAQPlatformAPI {
     private String city;
     private String parameter;
+    private String limit;
     Gson gson = new Gson();
 
-    public OpenAQPlatformAPI(String city, String parameter) {
+    public OpenAQPlatformAPI(String city, String parameter, String limit) {
         this.city = city;
         this.parameter = parameter;
+        this.limit = limit;
     }
 
     public String getCity() {
-        System.out.println(city);
         return city;
     }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
-
     public String getParameter() {
-        System.out.println(parameter);
         return parameter;
     }
 
-    public void setParameter(String parameter) {
-        this.parameter = parameter;
+    public String getLimit() {
+        return limit;
     }
 
     public String getResponse() {
 
         String response1 = null;
         StringBuffer response = new StringBuffer();
-        String url = "https://api.openaq.org/v1/measurements?city=" + city + "&parameter=" + parameter;
+        String url = "https://api.openaq.org/v1/measurements?city=" + city + "&parameter=" + parameter +"&limit=" + limit;
 
         try {
             URL obj = new URL(url);
@@ -61,7 +57,6 @@ public class OpenAQPlatformAPI {
             e.printStackTrace();
         }
 
-        System.out.println(response1);
         return response1;
     }//end of getResponse
 
@@ -71,16 +66,26 @@ public class OpenAQPlatformAPI {
         String[] results = result.split(",");
         ArrayList<String> dates = new ArrayList<>();
 
-        for (int i=0; i<results.length;i++) {
 
-            if (i%10 == 0)
-           dates.add(results[2+i].substring(13,23));
+
+        if (results[2].charAt(7)=='u') {
+            for (int i = 0; i < results.length; i++) {
+
+                if (i % 10 == 0)
+                    dates.add(results[2 + i].substring(11, 21));
+            }
+        }else {
+            for (int i=0; i<results.length;i++) {
+
+                if (i%10 == 0)
+                    dates.add(results[2+i].substring(13,23));
+            }
         }
 
         return dates;
     }//end of getDates
 
-    public ArrayList getValues(){
+    public ArrayList<Double> getValues(){
         Map map = gson.fromJson(String.valueOf(getResponse()), Map.class);
         String result = map.get("results").toString();
         String[] results = result.split(",");
@@ -92,7 +97,6 @@ public class OpenAQPlatformAPI {
                 values.add(Double.parseDouble(results[4+i].substring(7)));
         }
 
-        System.out.println(values);
         return values;
     }//end of getValues
 
@@ -115,7 +119,6 @@ public class OpenAQPlatformAPI {
                     localTimes.add(results[2 + i].substring(24));
             }
         }
-        System.out.println(localTimes);
         return localTimes;
     }//end of getLocalTime
 
@@ -138,7 +141,6 @@ public class OpenAQPlatformAPI {
                     utcTimes.add(results[3 + i].substring(16,29));
             }
         }
-        System.out.println(utcTimes);
         return utcTimes;
     }//end of getUTCTime
 
@@ -148,7 +150,7 @@ public class OpenAQPlatformAPI {
         String[] results = result.split(",");
 
         String unit = results[5].substring(6);
-        System.out.println(unit);
+
 
         return unit;
     }//end of getUnit

@@ -1,45 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.ScatterChart?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="120.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainWindowController">
+<AnchorPane prefHeight="544.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainWindowController">
    <children>
-      <HBox alignment="CENTER" layoutY="70.0" prefWidth="600.0" spacing="12.0">
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="460.0" prefHeight="30.0" prefWidth="630.0" spacing="12.0">
          <children>
-            <Button fx:id="btnPM10" mnemonicParsing="false" onAction="#btnPM10Clicked" prefHeight="30.0" prefWidth="80.0" text="PM10">
+            <Label text="PARAMETER:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnPM10" mnemonicParsing="false" onAction="#btnPM10Clicked" prefHeight="30.0" prefWidth="75.0" text="PM10">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="btnPM25" mnemonicParsing="false" onAction="#btnPM25Clicked" prefHeight="30.0" prefWidth="80.0" text="PM2,5">
+            <Button fx:id="btnPM25" mnemonicParsing="false" onAction="#btnPM25Clicked" prefHeight="30.0" prefWidth="75.0" text="PM2,5">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
-            <Button fx:id="btnO3" mnemonicParsing="false" onAction="#btnO3clicked" prefHeight="30.0" prefWidth="80.0" text="O3">
+            <Button fx:id="btnO3" mnemonicParsing="false" onAction="#btnO3clicked" prefHeight="30.0" prefWidth="75.0" text="O3">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
-            <Button fx:id="btnNO2" mnemonicParsing="false" onAction="#btnNO2Clicked" prefHeight="30.0" prefWidth="80.0" text="NO2">
+            <Button fx:id="btnNO2" mnemonicParsing="false" onAction="#btnNO2Clicked" prefHeight="30.0" prefWidth="75.0" text="NO2">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
-            <Button fx:id="btnSO2" mnemonicParsing="false" onAction="#btnSO2Clicked" prefHeight="30.0" prefWidth="90.0" text="SO2">
+            <Button fx:id="btnSO2" mnemonicParsing="false" onAction="#btnSO2Clicked" prefHeight="30.0" prefWidth="75.0" text="SO2">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
-            <Button fx:id="btnCO" mnemonicParsing="false" onAction="#btnCOClicked" prefHeight="30.0" prefWidth="80.0" text="CO">
+            <Button fx:id="btnCO" mnemonicParsing="false" onAction="#btnCOClicked" prefHeight="30.0" prefWidth="75.0" text="CO">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
          </children>
       </HBox>
-      <HBox alignment="CENTER" layoutY="25.0" prefWidth="600.0">
+      <HBox alignment="CENTER" layoutY="25.0" prefWidth="600.0" />
+      <HBox alignment="CENTER" layoutY="422.0" prefHeight="30.0" prefWidth="650.0" spacing="10.0">
          <children>
-            <TextField fx:id="textFieldCity" prefHeight="25.0" prefWidth="170.0" promptText="Please enter the name of city" />
+            <Label text="CITY:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldCity" alignment="CENTER" prefHeight="25.0" prefWidth="250.0" promptText="Please enter the name of city" />
+            <Label text="LIMIT:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldLimit" alignment="CENTER" prefHeight="25.0" prefWidth="250.0" promptText="Please enter the limit of measurements" />
+         </children>
+      </HBox>
+      <TableView fx:id="tableAirQuality" editable="true" layoutX="310.0" layoutY="15.0" onSort="#tableAirQualitySorted" prefHeight="200.0" prefWidth="300.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="30.0" layoutY="175.0" prefHeight="45.0" prefWidth="75.0" text="STANDARD DEVIATION:" wrapText="true">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="30.0" layoutY="115.0" prefHeight="25.0" prefWidth="75.0" text="MIN:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="30.0" layoutY="145.0" prefHeight="25.0" prefWidth="75.0" text="MAX:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="30.0" layoutY="85.0" prefHeight="25.0" prefWidth="75.0" text="NUMBER:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="30.0" layoutY="55.0" prefHeight="25.0" prefWidth="75.0" text="LAST DATE:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="30.0" layoutY="25.0" prefHeight="25.0" prefWidth="75.0" text="FIRST DATE:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textFieldNumber" layoutX="116.0" layoutY="85.0" />
+      <TextField fx:id="textFieldLastDate" layoutX="116.0" layoutY="55.0" />
+      <TextField fx:id="textFieldFirstDate" layoutX="116.0" layoutY="25.0" />
+      <TextField fx:id="TextFieldSD" layoutX="116.0" layoutY="185.0" />
+      <TextField fx:id="textFieldMax" layoutX="116.0" layoutY="145.0" prefHeight="25.0" prefWidth="149.0" />
+      <TextField fx:id="textFieldMin" layoutX="116.0" layoutY="115.0" />
+      <ScatterChart layoutX="75.0" layoutY="232.0" prefHeight="190.0" prefWidth="500.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </ScatterChart>
+      <HBox alignment="CENTER" layoutX="57.0" layoutY="500.0" prefHeight="30.0" prefWidth="536.0" spacing="20.0">
+         <children>
+            <Button fx:id="btnSave" mnemonicParsing="false" onAction="#btnSaveClicked" prefHeight="30.0" prefWidth="150.0" text="SAVE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnLoad" mnemonicParsing="false" onAction="#btnLoadClicked" prefHeight="30.0" prefWidth="150.0" text="LOAD">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnClear" mnemonicParsing="false" onAction="#btnClearClicked" prefHeight="30.0" prefWidth="150.0" text="CLEAR">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
          </children>
       </HBox>
    </children>
