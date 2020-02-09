@@ -1,0 +1,16 @@
+.root {
+    -fx-background-image: url("/jpg/MainWindowBackground.jpg");
+}
+
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+
+.chart {
+    -fx-background-color: transparent;
+}
+
+.button {
+    -fx-background-color: black;
+    -fx-background-radius: 10;
+}

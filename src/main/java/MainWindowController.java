@@ -192,8 +192,10 @@ public class MainWindowController {
             }
         }
 
-        if (isLengthOk && isCityOk && isLimitOk && isLimitDoubleOk)
+        if (isLengthOk && isCityOk && isLimitOk && isLimitDoubleOk) {
             addResults();
+            addToTable();
+        }
 
     }//end of btnCOClicked
 
@@ -249,8 +251,10 @@ public class MainWindowController {
             }
         }
 
-        if (isLengthOk && isCityOk && isLimitOk && isLimitDoubleOk)
+        if (isLengthOk && isCityOk && isLimitOk && isLimitDoubleOk) {
             addResults();
+            addToTable();
+        }
 
     }//end of btnNO2Clicked
 
@@ -305,8 +309,10 @@ public class MainWindowController {
             }
         }
 
-        if (isLengthOk && isCityOk && isLimitOk && isLimitDoubleOk)
+        if (isLengthOk && isCityOk && isLimitOk && isLimitDoubleOk) {
             addResults();
+            addToTable();
+        }
 
     }//end of btnO3clicked
 
@@ -419,9 +425,10 @@ public class MainWindowController {
             }
         }
 
-        if (isLengthOk && isCityOk && isLimitOk && isLimitDoubleOk)
+        if (isLengthOk && isCityOk && isLimitOk && isLimitDoubleOk) {
             addResults();
-
+            addToTable();
+        }
     }//end of btnPM25Clicked
 
     @FXML
@@ -475,8 +482,10 @@ public class MainWindowController {
             }
         }
 
-        if (isLengthOk && isCityOk && isLimitOk && isLimitDoubleOk)
+        if (isLengthOk && isCityOk && isLimitOk && isLimitDoubleOk) {
             addResults();
+            addToTable();
+        }
 
     }//end of btnSO2Clicked
 
@@ -562,6 +571,13 @@ public class MainWindowController {
         textFieldNumber.clear();
         textFieldSD.clear();
         scatterChart.getData().clear();
+        textField8.clear();
+        textField9.clear();
+        textField10.clear();
+        textField11.clear();
+        textField12.clear();
+        textField13.clear();
+        textField14.clear();
     }
 
     @FXML
@@ -611,10 +627,10 @@ public class MainWindowController {
 
             ChoosePathWindowController choosePathController = fxmlLoader.getController();
             Scene scene = new Scene(root);
-           // scene.getStylesheets().add("/fxml/StylesheetChoosePathWindow.css");
+            scene.getStylesheets().add("/css/PathWindow.css");
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.setTitle("Choose path to save trajectory");
+            stage.setTitle("Choose path");
             stage.initModality(Modality.WINDOW_MODAL);
             stage.showAndWait();
 
@@ -633,7 +649,7 @@ public class MainWindowController {
             Parent root = fxmlLoader.load();
 
             Scene scene = new Scene(root);
-           // scene.getStylesheets().add("/fxml/StylesheetIncorrectPathWindow.css");
+            scene.getStylesheets().add("/css/PathWindow.css");
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setTitle("Incorrect path");
@@ -697,21 +713,54 @@ public class MainWindowController {
     }//end of addResults
 
     public void addToTable(){
-        String firstIndex = textField1.getText();
-        String secondIndex = textField2.getText();
-        String thirdIndex = textField3.getText();
-        String fourthIndex = textField4.getText();
-        String fifthIndex = textField5.getText();
-        String sixthIndex = textField6.getText();
-        String seventhIndex = textField7.getText();
-        if (parameter.equals("pm10")){
-            textField1.setText(fifthIndex+" 0 - 20");
-            textField2.setText(secondIndex+" 20,1 - 50");
-            textField3.setText(thirdIndex+" 50,1 - 80");
-            textField4.setText(fourthIndex+" 80,1 - 110");
-            textField5.setText(fifthIndex+" 110,1 - 150");
-            textField6.setText(sixthIndex+" >150");
 
+        if (parameter.equals("pm10")){
+            textField8.setText("0 - 20");
+            textField9.setText("20,1 - 50");
+            textField10.setText("50,1 - 80");
+            textField11.setText("80,1 - 110");
+            textField12.setText("110,1 - 150");
+            textField13.setText(">150");
+        }
+        else if(parameter.equals("pm25")){
+            textField8.setText("0 - 13");
+            textField9.setText("13,1 - 35");
+            textField10.setText("35,1 - 55");
+            textField11.setText("55,1 - 75");
+            textField12.setText("75,1 - 110");
+            textField13.setText(">110");
+        }
+        else if(parameter.equals("o3")){
+            textField8.setText("0 - 70");
+            textField9.setText("70,1 - 120");
+            textField10.setText("120,1 - 150");
+            textField11.setText("150,1 - 180");
+            textField12.setText("180,1 - 240");
+            textField13.setText(">240");
+        }
+        else if(parameter.equals("no2")){
+            textField8.setText("0 - 40");
+            textField9.setText("40,1 - 100");
+            textField10.setText("100,1 - 150");
+            textField11.setText("150,1 - 200");
+            textField12.setText("200,1 - 400");
+            textField13.setText(">400");
+        }
+        else if(parameter.equals("so2")){
+            textField8.setText("0 - 50");
+            textField9.setText("50,1 - 100");
+            textField10.setText("100,1 - 200");
+            textField11.setText("200,1 - 350");
+            textField12.setText("350,1 - 500");
+            textField13.setText(">500");
+        }
+        else if(parameter.equals("co")){
+            textField8.setText("0 - 3000");
+            textField9.setText("3001 - 7000");
+            textField10.setText("7001 - 11000");
+            textField11.setText("11001 - 15000");
+            textField12.setText("15001 - 21000");
+            textField13.setText(">21000");
         }
 
     }//end of addToTable

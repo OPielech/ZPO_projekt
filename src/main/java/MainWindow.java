@@ -16,6 +16,7 @@ public class MainWindow extends Application {
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/MainWindow.fxml"));
         Scene scene = new Scene(root);
+        scene.getStylesheets().add("css/MainWindow.css");
         primaryStage.setScene(scene);
         primaryStage.setTitle("Air quality");
         primaryStage.show();
