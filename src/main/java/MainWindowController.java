@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -10,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.ScatterChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -58,6 +60,48 @@ public class MainWindowController {
     private Button btnClear;
 
     @FXML
+    private TextField textField1;
+
+    @FXML
+    private TextField textField2;
+
+    @FXML
+    private TextField textField3;
+
+    @FXML
+    private TextField textField4;
+
+    @FXML
+    private TextField textField5;
+
+    @FXML
+    private TextField textField6;
+
+    @FXML
+    private TextField textField7;
+
+    @FXML
+    private TextField textField8;
+
+    @FXML
+    private TextField textField9;
+
+    @FXML
+    private TextField textField10;
+
+    @FXML
+    private TextField textField11;
+
+    @FXML
+    private TextField textField12;
+
+    @FXML
+    private TextField textField13;
+
+    @FXML
+    private TextField textField14;
+
+    @FXML
     private TextField textFieldCity;
 
     @FXML
@@ -76,7 +120,7 @@ public class MainWindowController {
     private TextField textFieldFirstDate;
 
     @FXML
-    private TextField TextFieldSD;
+    private TextField textFieldSD;
 
     @FXML
     private TextField textFieldMax;
@@ -89,6 +133,11 @@ public class MainWindowController {
 
     @FXML
     private Button btnLoad;
+
+    @FXML
+    private ScatterChart<Number, Number> scatterChart;
+
+
 
     @FXML
     void btnCOClicked(ActionEvent event) {
@@ -143,11 +192,8 @@ public class MainWindowController {
             }
         }
 
-        if (isLengthOk && isCityOk && isLimitOk && isLimitDoubleOk){
-            openAQPlatformAPI.getParameter();
-            openAQPlatformAPI.getCity();
-            openAQPlatformAPI.getLimit();
-        }
+        if (isLengthOk && isCityOk && isLimitOk && isLimitDoubleOk)
+            addResults();
 
     }//end of btnCOClicked
 
@@ -203,11 +249,9 @@ public class MainWindowController {
             }
         }
 
-        if (isLengthOk && isCityOk && isLimitOk && isLimitDoubleOk){
-            openAQPlatformAPI.getParameter();
-            openAQPlatformAPI.getCity();
-            openAQPlatformAPI.getLimit();
-        }
+        if (isLengthOk && isCityOk && isLimitOk && isLimitDoubleOk)
+            addResults();
+
     }//end of btnNO2Clicked
 
     @FXML
@@ -229,7 +273,7 @@ public class MainWindowController {
 
         try{
             limit = textFieldLimit.getText();
-            if (limit.isEmpty() )
+            if (limit.isEmpty())
                 throw new IllegalArgumentException();
             else
                 isLimitOk = true;
@@ -261,11 +305,9 @@ public class MainWindowController {
             }
         }
 
-        if (isLengthOk && isCityOk && isLimitOk && isLimitDoubleOk){
-            openAQPlatformAPI.getParameter();
-            openAQPlatformAPI.getCity();
-            openAQPlatformAPI.getLimit();
-        }
+        if (isLengthOk && isCityOk && isLimitOk && isLimitDoubleOk)
+            addResults();
+
     }//end of btnO3clicked
 
     @FXML
@@ -319,11 +361,11 @@ public class MainWindowController {
             }
         }
 
-        if (isLengthOk && isCityOk && isLimitOk && isLimitDoubleOk){
-            openAQPlatformAPI.getParameter();
-            openAQPlatformAPI.getCity();
-            openAQPlatformAPI.getLimit();
+        if (isLengthOk && isCityOk && isLimitOk && isLimitDoubleOk) {
+            addResults();
+            addToTable();
         }
+
     }//end of btnPM10Clicked
 
     @FXML
@@ -377,11 +419,9 @@ public class MainWindowController {
             }
         }
 
-        if (isLengthOk && isCityOk && isLimitOk && isLimitDoubleOk){
-            openAQPlatformAPI.getParameter();
-            openAQPlatformAPI.getCity();
-            openAQPlatformAPI.getLimit();
-        }
+        if (isLengthOk && isCityOk && isLimitOk && isLimitDoubleOk)
+            addResults();
+
     }//end of btnPM25Clicked
 
     @FXML
@@ -435,19 +475,53 @@ public class MainWindowController {
             }
         }
 
-        if (isLengthOk && isCityOk && isLimitOk && isLimitDoubleOk){
+        if (isLengthOk && isCityOk && isLimitOk && isLimitDoubleOk)
             addResults();
-//            textFieldFirstDate.setText(openAQPlatformAPI.getDates().get(0).toString());
-//            openAQPlatformAPI.getParameter();
-//            openAQPlatformAPI.getCity();
-//            openAQPlatformAPI.getLimit();
-        }
+
     }//end of btnSO2Clicked
 
     @FXML
     void btnLoadClicked(ActionEvent event) {
+        isCityOk = false;
+        isLimitOk = false;
+        try {
+            if(!openAQPlatformAPI.getCity().isEmpty())
+                isCityOk = true;
+            else
+                throw new NullPointerException();
 
-    }
+            if(!openAQPlatformAPI.getLimit().isEmpty())
+                isLimitOk = true;
+            else
+                throw new NullPointerException();
+
+            if(openAQPlatformAPI.getCity().isEmpty() && textFieldCity.getText().isEmpty())
+                isCityOk = true;
+            else
+                throw new NullPointerException();
+
+            if(openAQPlatformAPI.getLimit().isEmpty() && textFieldLimit.getText().isEmpty())
+                isLimitOk = true;
+            else
+                throw new NullPointerException();
+
+        }catch (NullPointerException e){
+            if (!isCityOk && isLimitOk)
+                textFieldCity.setText("Please enter the name of city");
+            else if (!isLimitOk && isCityOk)
+                textFieldLimit.setText("Please enter the limit");
+            else{
+                textFieldCity.setText("Please enter the name of city");
+                textFieldLimit.setText("Please enter the limit");
+            }
+        }
+
+        if(isLimitOk && isCityOk) {
+            addResults();
+            textFieldCity.setText(openAQPlatformAPI.getCity());
+            textFieldLimit.setText(openAQPlatformAPI.getLimit());
+        }
+    }//end of btnLoadClicked
 
     @FXML
     void btnSaveClicked(ActionEvent event) {
@@ -486,6 +560,8 @@ public class MainWindowController {
         textFieldMax.clear();
         textFieldMin.clear();
         textFieldNumber.clear();
+        textFieldSD.clear();
+        scatterChart.getData().clear();
     }
 
     @FXML
@@ -502,12 +578,28 @@ public class MainWindowController {
         assert textFieldNumber != null : "fx:id=\"textFieldNumber\" was not injected: check your FXML file 'MainWindow.fxml'.";
         assert textFieldLastDate != null : "fx:id=\"textFieldLastDate\" was not injected: check your FXML file 'MainWindow.fxml'.";
         assert textFieldFirstDate != null : "fx:id=\"textFieldFirstDate\" was not injected: check your FXML file 'MainWindow.fxml'.";
-        assert TextFieldSD != null : "fx:id=\"TextFieldSD\" was not injected: check your FXML file 'MainWindow.fxml'.";
+        assert textFieldSD != null : "fx:id=\"textFieldSD\" was not injected: check your FXML file 'MainWindow.fxml'.";
         assert textFieldMax != null : "fx:id=\"textFieldMax\" was not injected: check your FXML file 'MainWindow.fxml'.";
         assert textFieldMin != null : "fx:id=\"textFieldMin\" was not injected: check your FXML file 'MainWindow.fxml'.";
         assert btnSave != null : "fx:id=\"btnSave\" was not injected: check your FXML file 'MainWindow.fxml'.";
         assert btnLoad != null : "fx:id=\"btnLoad\" was not injected: check your FXML file 'MainWindow.fxml'.";
         assert btnClear != null : "fx:id=\"btnClear\" was not injected: check your FXML file 'MainWindow.fxml'.";
+        assert scatterChart != null : "fx:id=\"scatterChart\" was not injected: check your FXML file 'MainWindow.fxml'.";
+        assert textField1 != null : "fx:id=\"textField1\" was not injected: check your FXML file 'MainWindow.fxml'.";
+        assert textField2 != null : "fx:id=\"textField2\" was not injected: check your FXML file 'MainWindow.fxml'.";
+        assert textField3 != null : "fx:id=\"textField3\" was not injected: check your FXML file 'MainWindow.fxml'.";
+        assert textField4 != null : "fx:id=\"textField4\" was not injected: check your FXML file 'MainWindow.fxml'.";
+        assert textField5 != null : "fx:id=\"textField5\" was not injected: check your FXML file 'MainWindow.fxml'.";
+        assert textField6 != null : "fx:id=\"textField6\" was not injected: check your FXML file 'MainWindow.fxml'.";
+        assert textField7 != null : "fx:id=\"textField7\" was not injected: check your FXML file 'MainWindow.fxml'.";
+        assert textField8 != null : "fx:id=\"textField8\" was not injected: check your FXML file 'MainWindow.fxml'.";
+        assert textField9 != null : "fx:id=\"textField9\" was not injected: check your FXML file 'MainWindow.fxml'.";
+        assert textField10 != null : "fx:id=\"textField10\" was not injected: check your FXML file 'MainWindow.fxml'.";
+        assert textField11 != null : "fx:id=\"textField11\" was not injected: check your FXML file 'MainWindow.fxml'.";
+        assert textField12 != null : "fx:id=\"textField12\" was not injected: check your FXML file 'MainWindow.fxml'.";
+        assert textField13 != null : "fx:id=\"textField13\" was not injected: check your FXML file 'MainWindow.fxml'.";
+        assert textField14 != null : "fx:id=\"textField14\" was not injected: check your FXML file 'MainWindow.fxml'.";
+
 
     }
 
@@ -555,8 +647,16 @@ public class MainWindowController {
     }//end of openIncorrectPathWindow
 
     public void addResults(){
+        double sum = 0;
+        double average;
         double size;
+        double standardDeviation = 0;
         String sizeString;
+        scatterChart.getData().clear();
+
+        ScatterChartData scatterChartData = new ScatterChartData
+                (openAQPlatformAPI.getCity(),openAQPlatformAPI.getParameter(),openAQPlatformAPI.getLimit());
+
         ArrayList<Double> temp = openAQPlatformAPI.getValues();
         size = openAQPlatformAPI.getValues().size();
         sizeString = String.valueOf((int)size);
@@ -574,14 +674,47 @@ public class MainWindowController {
                 max = temp.get(i);
         }
 
+        for (int i=0; i<size; i++)
+            sum+=temp.get(i);
 
-        System.out.println(min);
-        textFieldMin.setText(min.toString());
-        textFieldMax.setText(max.toString());
+
+        average = sum/size;
+        sum = 0;
+
+        for (int i =0; i<size; i++)
+           sum+= Math.pow(temp.get(i)-average,2);
+
+        standardDeviation = Math.sqrt(sum/size);
+
+        textFieldMin.setText(String.format("%.5f",min));
+        textFieldMax.setText(String.format("%.5f",max));
+        textFieldSD.setText(String.format("%.5f",standardDeviation));
         textFieldNumber.setText(sizeString);
         textFieldFirstDate.setText(openAQPlatformAPI.getDates().get(0).toString());
         textFieldLastDate.setText(openAQPlatformAPI.getDates().get((int)size-1).toString());
+        scatterChart.getData().add(scatterChartData.getNormValues());
+        scatterChart.getData().add(scatterChartData.getValues());
     }//end of addResults
+
+    public void addToTable(){
+        String firstIndex = textField1.getText();
+        String secondIndex = textField2.getText();
+        String thirdIndex = textField3.getText();
+        String fourthIndex = textField4.getText();
+        String fifthIndex = textField5.getText();
+        String sixthIndex = textField6.getText();
+        String seventhIndex = textField7.getText();
+        if (parameter.equals("pm10")){
+            textField1.setText(fifthIndex+" 0 - 20");
+            textField2.setText(secondIndex+" 20,1 - 50");
+            textField3.setText(thirdIndex+" 50,1 - 80");
+            textField4.setText(fourthIndex+" 80,1 - 110");
+            textField5.setText(fifthIndex+" 110,1 - 150");
+            textField6.setText(sixthIndex+" >150");
+
+        }
+
+    }//end of addToTable
 
 }//end of class
 
