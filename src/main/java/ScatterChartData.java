@@ -15,23 +15,21 @@ public class ScatterChartData {
     }
 
 
-
-
-    public XYChart.Series getValues(){
-        openAQPlatformAPI = new OpenAQPlatformAPI(city,parameter,limit);
+    public XYChart.Series getValues() {
+        openAQPlatformAPI = new OpenAQPlatformAPI(city, parameter, limit);
         XYChart.Series series = new XYChart.Series();
         ArrayList temp = openAQPlatformAPI.getValues();
         int size = temp.size();
 
-        for (int i=0; i<size; i++){
-            series.getData().add(new XYChart.Data(i,temp.get(i)));
+        for (int i = 0; i < size; i++) {
+            series.getData().add(new XYChart.Data(i, temp.get(i)));
         }
 
         return series;
     }//end of getValues
 
-    public XYChart.Series getNormValues(){
-        openAQPlatformAPI = new OpenAQPlatformAPI(city,parameter,limit);
+    public XYChart.Series getNormValues() {
+        openAQPlatformAPI = new OpenAQPlatformAPI(city, parameter, limit);
         XYChart.Series series = new XYChart.Series();
         ArrayList temp = openAQPlatformAPI.getValues();
         int size = temp.size();
@@ -39,29 +37,19 @@ public class ScatterChartData {
         if (openAQPlatformAPI.getParameter().equals("pm10")) {
             for (int i = 0; i < size; i++)
                 series.getData().add(new XYChart.Data(i, 50));
-        }
-
-        else if (openAQPlatformAPI.getParameter().equals("pm25")){
+        } else if (openAQPlatformAPI.getParameter().equals("pm25")) {
             for (int i = 0; i < size; i++)
                 series.getData().add(new XYChart.Data(i, 25));
-        }
-
-        else if (openAQPlatformAPI.getParameter().equals("no2")){
+        } else if (openAQPlatformAPI.getParameter().equals("no2")) {
             for (int i = 0; i < size; i++)
                 series.getData().add(new XYChart.Data(i, 200));
-        }
-
-        else if (openAQPlatformAPI.getParameter().equals("so2")){
+        } else if (openAQPlatformAPI.getParameter().equals("so2")) {
             for (int i = 0; i < size; i++)
                 series.getData().add(new XYChart.Data(i, 350));
-        }
-
-        else if (openAQPlatformAPI.getParameter().equals("co")){
+        } else if (openAQPlatformAPI.getParameter().equals("co")) {
             for (int i = 0; i < size; i++)
                 series.getData().add(new XYChart.Data(i, 10000));
-        }
-
-        else{
+        } else {
             for (int i = 0; i < size; i++)
                 series.getData().add(new XYChart.Data(i, 150));
         }

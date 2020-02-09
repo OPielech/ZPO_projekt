@@ -1,8 +1,8 @@
 import java.util.List;
 
 public class MappingJSON {
-Meta meta;
-List <Results> results;
+    Meta meta;
+    List<Results> results;
 
 
     public Meta getMeta() {

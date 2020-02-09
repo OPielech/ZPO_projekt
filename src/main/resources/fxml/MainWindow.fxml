@@ -10,199 +10,243 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="544.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainWindowController">
-   <children>
-      <HBox alignment="CENTER" layoutX="10.0" layoutY="460.0" prefHeight="30.0" prefWidth="630.0" spacing="12.0">
-         <children>
-            <Label text="PARAMETER:" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Button fx:id="btnPM10" mnemonicParsing="false" onAction="#btnPM10Clicked" prefHeight="30.0" prefWidth="75.0" text="PM10" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnPM25" mnemonicParsing="false" onAction="#btnPM25Clicked" prefHeight="30.0" prefWidth="75.0" text="PM2,5" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Button>
-            <Button fx:id="btnO3" mnemonicParsing="false" onAction="#btnO3clicked" prefHeight="30.0" prefWidth="75.0" text="O3" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Button>
-            <Button fx:id="btnNO2" mnemonicParsing="false" onAction="#btnNO2Clicked" prefHeight="30.0" prefWidth="75.0" text="NO2" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Button>
-            <Button fx:id="btnSO2" mnemonicParsing="false" onAction="#btnSO2Clicked" prefHeight="30.0" prefWidth="75.0" text="SO2" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Button>
-            <Button fx:id="btnCO" mnemonicParsing="false" onAction="#btnCOClicked" prefHeight="30.0" prefWidth="75.0" text="CO" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Button>
-         </children>
-      </HBox>
-      <HBox alignment="CENTER" layoutY="25.0" prefWidth="600.0" />
-      <HBox alignment="CENTER" layoutY="422.0" prefHeight="30.0" prefWidth="650.0" spacing="10.0">
-         <children>
-            <Label text="CITY:" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <TextField fx:id="textFieldCity" alignment="CENTER" prefHeight="25.0" prefWidth="250.0" promptText="Please enter the name of city" />
-            <Label text="LIMIT:" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <TextField fx:id="textFieldLimit" alignment="CENTER" prefHeight="25.0" prefWidth="250.0" promptText="Please enter the limit of measurements" />
-         </children>
-      </HBox>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="30.0" layoutY="175.0" prefHeight="45.0" prefWidth="75.0" text="STANDARD DEVIATION:" textFill="WHITE" wrapText="true">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="30.0" layoutY="115.0" prefHeight="25.0" prefWidth="75.0" text="MIN:" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="30.0" layoutY="145.0" prefHeight="25.0" prefWidth="75.0" text="MAX:" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="30.0" layoutY="85.0" prefHeight="25.0" prefWidth="75.0" text="NUMBER:" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="30.0" layoutY="55.0" prefHeight="25.0" prefWidth="75.0" text="LAST DATE:" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="30.0" layoutY="25.0" prefHeight="25.0" prefWidth="75.0" text="FIRST DATE:" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <TextField fx:id="textFieldNumber" editable="false" layoutX="116.0" layoutY="85.0" mouseTransparent="true" prefWidth="170.0" />
-      <TextField fx:id="textFieldLastDate" editable="false" layoutX="116.0" layoutY="55.0" mouseTransparent="true" prefWidth="170.0" />
-      <TextField fx:id="textFieldFirstDate" editable="false" layoutX="116.0" layoutY="25.0" mouseTransparent="true" prefHeight="25.0" prefWidth="170.0" />
-      <TextField fx:id="textFieldSD" editable="false" layoutX="116.0" layoutY="185.0" mouseTransparent="true" prefWidth="170.0" />
-      <TextField fx:id="textFieldMax" editable="false" layoutX="116.0" layoutY="145.0" mouseTransparent="true" prefHeight="25.0" prefWidth="170.0" />
-      <TextField fx:id="textFieldMin" editable="false" layoutX="116.0" layoutY="115.0" mouseTransparent="true" prefWidth="170.0" />
-      <ScatterChart fx:id="scatterChart" layoutY="232.0" legendVisible="false" prefHeight="190.0" prefWidth="650.0">
-        <xAxis>
-          <NumberAxis side="BOTTOM" />
-        </xAxis>
-        <yAxis>
-          <NumberAxis side="LEFT" />
-        </yAxis>
-      </ScatterChart>
-      <HBox alignment="CENTER" layoutX="57.0" layoutY="500.0" prefHeight="30.0" prefWidth="536.0" spacing="20.0">
-         <children>
-            <Button fx:id="btnSave" mnemonicParsing="false" onAction="#btnSaveClicked" prefHeight="30.0" prefWidth="150.0" text="SAVE" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnLoad" mnemonicParsing="false" onAction="#btnLoadClicked" prefHeight="30.0" prefWidth="150.0" text="LOAD" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnClear" mnemonicParsing="false" onAction="#btnClearClicked" prefHeight="30.0" prefWidth="150.0" text="CLEAR" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
-         </children>
-      </HBox>
-      <VBox layoutX="340.0" layoutY="23.0" prefHeight="210.0" prefWidth="140.0">
-         <children>
-            <TextField fx:id="textField1" alignment="CENTER" editable="false" mouseTransparent="true" prefHeight="30.0" stylesheets="@../css/StylesheetTextField1.css" text="VERY GOOD">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="textField2" alignment="CENTER" editable="false" mouseTransparent="true" prefHeight="30.0" stylesheets="@../css/StylesheetTextField2.css" text="GOOD">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="textField3" alignment="CENTER" editable="false" mouseTransparent="true" prefHeight="30.0" stylesheets="@../css/StylesheetTextField3.css" text="MODERATE">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="textField4" alignment="CENTER" editable="false" mouseTransparent="true" prefHeight="30.0" stylesheets="@../css/StylesheetTextField4.css" text="SUFFICIENT">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="textField5" alignment="CENTER" editable="false" mouseTransparent="true" prefHeight="30.0" stylesheets="@../css/StylesheetTextField5.css" text="POOR">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="textField6" alignment="CENTER" editable="false" mouseTransparent="true" prefHeight="30.0" stylesheets="@../css/StylesheetTextField6.css" text="VERY POOR">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="textField7" alignment="CENTER" editable="false" mouseTransparent="true" prefHeight="30.0" prefWidth="260.0" stylesheets="@../css/StylesheetTextField7.css" text="NO INDEX">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </TextField>
-         </children>
-      </VBox>
-      <VBox layoutX="470.0" layoutY="23.0" prefHeight="210.0" prefWidth="140.0">
-         <children>
-            <TextField fx:id="textField8" alignment="CENTER" editable="false" mouseTransparent="true" prefHeight="30.0" stylesheets="@../css/StylesheetTextField1.css">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="textField9" alignment="CENTER" editable="false" mouseTransparent="true" prefHeight="30.0" stylesheets="@../css/StylesheetTextField2.css">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="textField10" alignment="CENTER" editable="false" mouseTransparent="true" prefHeight="30.0" stylesheets="@../css/StylesheetTextField3.css">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="textField11" alignment="CENTER" editable="false" mouseTransparent="true" prefHeight="30.0" stylesheets="@../css/StylesheetTextField4.css">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="textField12" alignment="CENTER" editable="false" mouseTransparent="true" prefHeight="30.0" stylesheets="@../css/StylesheetTextField5.css">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="textField13" alignment="CENTER" editable="false" mouseTransparent="true" prefHeight="30.0" stylesheets="@../css/StylesheetTextField6.css">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="textField14" alignment="CENTER" editable="false" mouseTransparent="true" prefHeight="30.0" prefWidth="260.0" stylesheets="@../css/StylesheetTextField7.css">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </TextField>
-         </children>
-      </VBox>
-   </children>
+<AnchorPane prefHeight="544.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainWindowController">
+    <children>
+        <HBox alignment="CENTER" layoutX="10.0" layoutY="460.0" prefHeight="30.0" prefWidth="630.0" spacing="12.0">
+            <children>
+                <Label text="PARAMETER:" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="12.0"/>
+                    </font>
+                </Label>
+                <Button fx:id="btnPM10" mnemonicParsing="false" onAction="#btnPM10Clicked" prefHeight="30.0"
+                        prefWidth="75.0" text="PM10" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="12.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="btnPM25" mnemonicParsing="false" onAction="#btnPM25Clicked" prefHeight="30.0"
+                        prefWidth="75.0" text="PM2,5" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="12.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="btnO3" mnemonicParsing="false" onAction="#btnO3clicked" prefHeight="30.0"
+                        prefWidth="75.0" text="O3" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="12.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="btnNO2" mnemonicParsing="false" onAction="#btnNO2Clicked" prefHeight="30.0"
+                        prefWidth="75.0" text="NO2" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="12.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="btnSO2" mnemonicParsing="false" onAction="#btnSO2Clicked" prefHeight="30.0"
+                        prefWidth="75.0" text="SO2" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="12.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="btnCO" mnemonicParsing="false" onAction="#btnCOClicked" prefHeight="30.0"
+                        prefWidth="75.0" text="CO" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="12.0"/>
+                    </font>
+                </Button>
+            </children>
+        </HBox>
+        <HBox alignment="CENTER" layoutY="25.0" prefWidth="600.0"/>
+        <HBox alignment="CENTER" layoutY="422.0" prefHeight="30.0" prefWidth="650.0" spacing="10.0">
+            <children>
+                <Label text="CITY:" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="12.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="textFieldCity" alignment="CENTER" prefHeight="25.0" prefWidth="250.0"
+                           promptText="Please enter the name of city"/>
+                <Label text="LIMIT:" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="12.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="textFieldLimit" alignment="CENTER" prefHeight="25.0" prefWidth="250.0"
+                           promptText="Please enter the limit of measurements"/>
+            </children>
+        </HBox>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="30.0" layoutY="175.0" prefHeight="45.0"
+               prefWidth="75.0" text="STANDARD DEVIATION:" textFill="WHITE" wrapText="true">
+            <font>
+                <Font name="System Bold" size="12.0"/>
+            </font>
+        </Label>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="30.0" layoutY="115.0" prefHeight="25.0"
+               prefWidth="75.0" text="MIN:" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="12.0"/>
+            </font>
+        </Label>
+        <Label alignment="CENTER" layoutX="30.0" layoutY="145.0" prefHeight="25.0" prefWidth="75.0" text="MAX:"
+               textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="12.0"/>
+            </font>
+        </Label>
+        <Label alignment="CENTER" layoutX="30.0" layoutY="85.0" prefHeight="25.0" prefWidth="75.0" text="NUMBER:"
+               textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="12.0"/>
+            </font>
+        </Label>
+        <Label alignment="CENTER" layoutX="30.0" layoutY="55.0" prefHeight="25.0" prefWidth="75.0" text="LAST DATE:"
+               textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="12.0"/>
+            </font>
+        </Label>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="30.0" layoutY="25.0" prefHeight="25.0"
+               prefWidth="75.0" text="FIRST DATE:" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="12.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="textFieldNumber" editable="false" layoutX="116.0" layoutY="85.0" mouseTransparent="true"
+                   prefWidth="170.0"/>
+        <TextField fx:id="textFieldLastDate" editable="false" layoutX="116.0" layoutY="55.0" mouseTransparent="true"
+                   prefWidth="170.0"/>
+        <TextField fx:id="textFieldFirstDate" editable="false" layoutX="116.0" layoutY="25.0" mouseTransparent="true"
+                   prefHeight="25.0" prefWidth="170.0"/>
+        <TextField fx:id="textFieldSD" editable="false" layoutX="116.0" layoutY="185.0" mouseTransparent="true"
+                   prefWidth="170.0"/>
+        <TextField fx:id="textFieldMax" editable="false" layoutX="116.0" layoutY="145.0" mouseTransparent="true"
+                   prefHeight="25.0" prefWidth="170.0"/>
+        <TextField fx:id="textFieldMin" editable="false" layoutX="116.0" layoutY="115.0" mouseTransparent="true"
+                   prefWidth="170.0"/>
+        <ScatterChart fx:id="scatterChart" layoutY="232.0" legendVisible="false" prefHeight="190.0" prefWidth="650.0">
+            <xAxis>
+                <NumberAxis side="BOTTOM"/>
+            </xAxis>
+            <yAxis>
+                <NumberAxis side="LEFT"/>
+            </yAxis>
+        </ScatterChart>
+        <HBox alignment="CENTER" layoutX="57.0" layoutY="500.0" prefHeight="30.0" prefWidth="536.0" spacing="20.0">
+            <children>
+                <Button fx:id="btnSave" mnemonicParsing="false" onAction="#btnSaveClicked" prefHeight="30.0"
+                        prefWidth="150.0" text="SAVE" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="12.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="btnLoad" mnemonicParsing="false" onAction="#btnLoadClicked" prefHeight="30.0"
+                        prefWidth="150.0" text="LOAD" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="12.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="btnClear" mnemonicParsing="false" onAction="#btnClearClicked" prefHeight="30.0"
+                        prefWidth="150.0" text="CLEAR" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="12.0"/>
+                    </font>
+                </Button>
+            </children>
+        </HBox>
+        <VBox layoutX="340.0" layoutY="23.0" prefHeight="210.0" prefWidth="140.0">
+            <children>
+                <TextField fx:id="textField1" alignment="CENTER" editable="false" mouseTransparent="true"
+                           prefHeight="30.0" stylesheets="@../css/StylesheetTextField1.css" text="VERY GOOD">
+                    <font>
+                        <Font name="System Bold" size="14.0"/>
+                    </font>
+                </TextField>
+                <TextField fx:id="textField2" alignment="CENTER" editable="false" mouseTransparent="true"
+                           prefHeight="30.0" stylesheets="@../css/StylesheetTextField2.css" text="GOOD">
+                    <font>
+                        <Font name="System Bold" size="14.0"/>
+                    </font>
+                </TextField>
+                <TextField fx:id="textField3" alignment="CENTER" editable="false" mouseTransparent="true"
+                           prefHeight="30.0" stylesheets="@../css/StylesheetTextField3.css" text="MODERATE">
+                    <font>
+                        <Font name="System Bold" size="14.0"/>
+                    </font>
+                </TextField>
+                <TextField fx:id="textField4" alignment="CENTER" editable="false" mouseTransparent="true"
+                           prefHeight="30.0" stylesheets="@../css/StylesheetTextField4.css" text="SUFFICIENT">
+                    <font>
+                        <Font name="System Bold" size="14.0"/>
+                    </font>
+                </TextField>
+                <TextField fx:id="textField5" alignment="CENTER" editable="false" mouseTransparent="true"
+                           prefHeight="30.0" stylesheets="@../css/StylesheetTextField5.css" text="POOR">
+                    <font>
+                        <Font name="System Bold" size="14.0"/>
+                    </font>
+                </TextField>
+                <TextField fx:id="textField6" alignment="CENTER" editable="false" mouseTransparent="true"
+                           prefHeight="30.0" stylesheets="@../css/StylesheetTextField6.css" text="VERY POOR">
+                    <font>
+                        <Font name="System Bold" size="14.0"/>
+                    </font>
+                </TextField>
+                <TextField fx:id="textField7" alignment="CENTER" editable="false" mouseTransparent="true"
+                           prefHeight="30.0" prefWidth="260.0" stylesheets="@../css/StylesheetTextField7.css"
+                           text="NO INDEX">
+                    <font>
+                        <Font name="System Bold" size="14.0"/>
+                    </font>
+                </TextField>
+            </children>
+        </VBox>
+        <VBox layoutX="470.0" layoutY="23.0" prefHeight="210.0" prefWidth="140.0">
+            <children>
+                <TextField fx:id="textField8" alignment="CENTER" editable="false" mouseTransparent="true"
+                           prefHeight="30.0" stylesheets="@../css/StylesheetTextField1.css">
+                    <font>
+                        <Font name="System Bold" size="14.0"/>
+                    </font>
+                </TextField>
+                <TextField fx:id="textField9" alignment="CENTER" editable="false" mouseTransparent="true"
+                           prefHeight="30.0" stylesheets="@../css/StylesheetTextField2.css">
+                    <font>
+                        <Font name="System Bold" size="14.0"/>
+                    </font>
+                </TextField>
+                <TextField fx:id="textField10" alignment="CENTER" editable="false" mouseTransparent="true"
+                           prefHeight="30.0" stylesheets="@../css/StylesheetTextField3.css">
+                    <font>
+                        <Font name="System Bold" size="14.0"/>
+                    </font>
+                </TextField>
+                <TextField fx:id="textField11" alignment="CENTER" editable="false" mouseTransparent="true"
+                           prefHeight="30.0" stylesheets="@../css/StylesheetTextField4.css">
+                    <font>
+                        <Font name="System Bold" size="14.0"/>
+                    </font>
+                </TextField>
+                <TextField fx:id="textField12" alignment="CENTER" editable="false" mouseTransparent="true"
+                           prefHeight="30.0" stylesheets="@../css/StylesheetTextField5.css">
+                    <font>
+                        <Font name="System Bold" size="14.0"/>
+                    </font>
+                </TextField>
+                <TextField fx:id="textField13" alignment="CENTER" editable="false" mouseTransparent="true"
+                           prefHeight="30.0" stylesheets="@../css/StylesheetTextField6.css">
+                    <font>
+                        <Font name="System Bold" size="14.0"/>
+                    </font>
+                </TextField>
+                <TextField fx:id="textField14" alignment="CENTER" editable="false" mouseTransparent="true"
+                           prefHeight="30.0" prefWidth="260.0" stylesheets="@../css/StylesheetTextField7.css">
+                    <font>
+                        <Font name="System Bold" size="14.0"/>
+                    </font>
+                </TextField>
+            </children>
+        </VBox>
+    </children>
 </AnchorPane>
