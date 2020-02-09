@@ -155,7 +155,7 @@ public class MainWindowController {
             else
                 isCityOk = true;
         } catch (IllegalArgumentException e) {
-            textFieldCity.setText("Please enter name of city");
+            textFieldCity.setPromptText("Please enter name of city");
         }
 
         try {
@@ -174,7 +174,7 @@ public class MainWindowController {
                     isLimitDoubleOk = true;
             }
         } catch (IllegalArgumentException e) {
-            textFieldLimit.setText("Limit has to be between 1 and 10000");
+            textFieldLimit.setPromptText("Limit has to be between 1 and 10000");
         }
 
         if (isCityOk && isLimitOk && isLimitDoubleOk) {
@@ -186,9 +186,9 @@ public class MainWindowController {
                 else
                     isLengthOk = true;
             } catch (StringIndexOutOfBoundsException e) {
-                textFieldCity.setText("Please enter the correct name of city");
+                textFieldCity.setPromptText("Please enter the correct name of city");
             } catch (IllegalArgumentException e) {
-                textFieldCity.setText("Invalid name or unsupported city");
+                textFieldCity.setPromptText("Invalid name or unsupported city");
             }
         }
 
@@ -214,7 +214,7 @@ public class MainWindowController {
             } else
                 isCityOk = true;
         } catch (IllegalArgumentException e) {
-            textFieldCity.setText("Please enter name of city");
+            textFieldCity.setPromptText("Please enter name of city");
         }
 
         try {
@@ -233,7 +233,7 @@ public class MainWindowController {
                     isLimitDoubleOk = true;
             }
         } catch (IllegalArgumentException e) {
-            textFieldLimit.setText("Limit has to be between 1 and 10000");
+            textFieldLimit.setPromptText("Limit has to be between 1 and 10000");
         }
 
         if (isCityOk && isLimitOk && isLimitDoubleOk) {
@@ -245,9 +245,9 @@ public class MainWindowController {
                 else
                     isLengthOk = true;
             } catch (StringIndexOutOfBoundsException e) {
-                textFieldCity.setText("Please enter the correct name of city");
+                textFieldCity.setPromptText("Please enter the correct name of city");
             } catch (IllegalArgumentException e) {
-                textFieldCity.setText("Invalid name or unsupported city");
+                textFieldCity.setPromptText("Invalid name or unsupported city");
             }
         }
 
@@ -272,7 +272,7 @@ public class MainWindowController {
             } else
                 isCityOk = true;
         } catch (IllegalArgumentException e) {
-            textFieldCity.setText("Please enter name of city");
+            textFieldCity.setPromptText("Please enter name of city");
         }
 
         try {
@@ -291,7 +291,7 @@ public class MainWindowController {
                     isLimitDoubleOk = true;
             }
         } catch (IllegalArgumentException e) {
-            textFieldLimit.setText("Limit has to be between 1 and 10000");
+            textFieldLimit.setPromptText("Limit has to be between 1 and 10000");
         }
 
         if (isCityOk && isLimitOk && isLimitDoubleOk) {
@@ -303,9 +303,9 @@ public class MainWindowController {
                 else
                     isLengthOk = true;
             } catch (StringIndexOutOfBoundsException e) {
-                textFieldCity.setText("Please enter the correct name of city");
+                textFieldCity.setPromptText("Please enter the correct name of city");
             } catch (IllegalArgumentException e) {
-                textFieldCity.setText("Invalid name or unsupported city");
+                textFieldCity.setPromptText("Invalid name or unsupported city");
             }
         }
 
@@ -330,7 +330,7 @@ public class MainWindowController {
             } else
                 isCityOk = true;
         } catch (IllegalArgumentException e) {
-            textFieldCity.setText("Please enter name of city");
+            textFieldCity.setPromptText("Please enter name of city");
         }
 
         try {
@@ -349,7 +349,7 @@ public class MainWindowController {
                     isLimitDoubleOk = true;
             }
         } catch (IllegalArgumentException e) {
-            textFieldLimit.setText("Limit has to be between 1 and 10000");
+            textFieldLimit.setPromptText("Limit has to be between 1 and 10000");
         }
 
         if (isCityOk && isLimitOk && isLimitDoubleOk) {
@@ -361,9 +361,9 @@ public class MainWindowController {
                 else
                     isLengthOk = true;
             } catch (StringIndexOutOfBoundsException e) {
-                textFieldCity.setText("Please enter the correct name of city");
+                textFieldCity.setPromptText("Please enter the correct name of city");
             } catch (IllegalArgumentException e) {
-                textFieldCity.setText("Invalid name or unsupported city");
+                textFieldCity.setPromptText("Invalid name or unsupported city");
             }
         }
 
@@ -388,7 +388,7 @@ public class MainWindowController {
             } else
                 isCityOk = true;
         } catch (IllegalArgumentException e) {
-            textFieldCity.setText("Please enter name of city");
+            textFieldCity.setPromptText("Please enter name of city");
         }
 
         try {
@@ -407,7 +407,7 @@ public class MainWindowController {
                     isLimitDoubleOk = true;
             }
         } catch (IllegalArgumentException e) {
-            textFieldLimit.setText("Limit has to be between 1 and 10000");
+            textFieldLimit.setPromptText("Limit has to be between 1 and 10000");
         }
 
         if (isCityOk && isLimitOk && isLimitDoubleOk) {
@@ -419,9 +419,9 @@ public class MainWindowController {
                 else
                     isLengthOk = true;
             } catch (StringIndexOutOfBoundsException e) {
-                textFieldCity.setText("Please enter the correct name of city");
+                textFieldCity.setPromptText("Please enter the correct name of city");
             } catch (IllegalArgumentException e) {
-                textFieldCity.setText("Invalid name or unsupported city");
+                textFieldCity.setPromptText("Invalid name or unsupported city");
             }
         }
 
@@ -445,7 +445,7 @@ public class MainWindowController {
             } else
                 isCityOk = true;
         } catch (IllegalArgumentException e) {
-            textFieldCity.setText("Please enter name of city");
+            textFieldCity.setPromptText("Please enter name of city");
         }
 
         try {
@@ -464,7 +464,7 @@ public class MainWindowController {
                     isLimitDoubleOk = true;
             }
         } catch (IllegalArgumentException e) {
-            textFieldLimit.setText("Limit has to be between 1 and 10000");
+            textFieldLimit.setPromptText("Limit has to be between 1 and 10000");
         }
 
         if (isCityOk && isLimitOk && isLimitDoubleOk) {
@@ -476,9 +476,9 @@ public class MainWindowController {
                 else
                     isLengthOk = true;
             } catch (StringIndexOutOfBoundsException e) {
-                textFieldCity.setText("Please enter the correct name of city");
+                textFieldCity.setPromptText("Please enter the correct name of city");
             } catch (IllegalArgumentException e) {
-                textFieldCity.setText("Invalid name or unsupported city");
+                textFieldCity.setPromptText("Invalid name or unsupported city");
             }
         }
 
@@ -516,12 +516,12 @@ public class MainWindowController {
 
         } catch (NullPointerException e) {
             if (!isCityOk && isLimitOk)
-                textFieldCity.setText("Please enter the name of city");
+                textFieldCity.setPromptText("Please enter the name of city");
             else if (!isLimitOk && isCityOk)
-                textFieldLimit.setText("Please enter the limit");
+                textFieldLimit.setPromptText("Please enter the limit");
             else {
-                textFieldCity.setText("Please enter the name of city");
-                textFieldLimit.setText("Please enter the limit");
+                textFieldCity.setPromptText("Please enter the name of city");
+                textFieldLimit.setPromptText("Please enter the limit");
             }
         }
 
@@ -546,10 +546,10 @@ public class MainWindowController {
             printWriter.close();
 
         } catch (FileNotFoundException e) {
-            if (isOpen == false)
+            if (!isOpen)
                 openIncorrectPathWindow();
         } catch (NullPointerException e) {
-            if (isOpen == false)
+            if (!isOpen)
                 openIncorrectPathWindow();
         }
 
@@ -562,8 +562,8 @@ public class MainWindowController {
 
     @FXML
     void btnClearClicked(ActionEvent event) {
-        textFieldLimit.clear();
-        textFieldCity.clear();
+        textFieldLimit.setPromptText("Please enter the limit of measurements");
+        textFieldCity.setPromptText("Please enter the name of city");
         textFieldFirstDate.clear();
         textFieldLastDate.clear();
         textFieldMax.clear();
